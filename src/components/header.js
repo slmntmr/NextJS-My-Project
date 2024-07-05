@@ -1,44 +1,27 @@
 "use client";
-import Link from "next/link";
-import React from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
-import menu from "@/helpers/data/main-menu.json";
-import { usePathname } from "next/navigation";
+
+import React from 'react';
+import { Container, Nav, Navbar } from 'react-bootstrap';
+import Link from 'next/link';
+import styles from '../styles/header.module.css'; // Stil dosyasının doğru yolu
 
 const Header = () => {
-	const pathname = usePathname();
-
-	return (
-		<Navbar
-			expand="lg"
-			className="bg-dark"
-			data-bs-theme="dark"
-			collapseOnSelect
-		>
-			<Container>
-				<Navbar.Brand href="/" as={Link}>
-					Cosmo Shop
-				</Navbar.Brand>
-				<Navbar.Toggle aria-controls="basic-navbar-nav" />
-				<Navbar.Collapse id="basic-navbar-nav">
-					<Nav className="me-auto">
-						{menu.map((item) => (
-							<Nav.Link
-								key={item.id}
-								href={item.url}
-								as={Link}
-								prefetch={item.prefecth}
-								className={pathname === item.url ? "active" : ""}
-							>
-								{item.title}
-							</Nav.Link>
-						))}
-					</Nav>
-					<Link href="/dashboard">Dashboard</Link>
-				</Navbar.Collapse>
-			</Container>
-		</Navbar>
-	);
+  return (
+    <Navbar expand="lg" className={styles.navbarCustom}>
+      <Container>
+        <Navbar.Brand href="#home">HEADER</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link as={Link} href="/main/products">Products</Nav.Link>
+            <Nav.Link as={Link} href="/main/profile">Profile</Nav.Link>
+            <Nav.Link as={Link} href="/foods">Food list</Nav.Link>
+            <Nav.Link as={Link} href="/resume">Resume</Nav.Link> {/* Resume sayfası bağlantısı */}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
 };
 
 export default Header;

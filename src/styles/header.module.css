@@ -1,0 +1,8 @@
+.navbarCustom {
+  background-color: red !important;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000; /* Üstte kalması için yüksek bir z-index değeri */
+}
+
